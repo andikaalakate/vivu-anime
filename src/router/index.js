@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import('@views/DetailView.vue')
     },
     {
+      path: '/anime',
+      name: 'anime-list',
+      component: () => import('@views/AnimeListView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@views/NotFoundView.vue')
@@ -32,6 +37,16 @@ const router = createRouter({
       path: '/episode/:slug',
       name: 'episode',
       component: () => import('@views/EpisodeView.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@views/SearchView.vue')
+    },
+    {
+      path: '/genre/:slug',
+      name: 'genre',
+      component: () => import('@views/GenreView.vue')
     }
   ]
 })

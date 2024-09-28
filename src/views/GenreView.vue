@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 import { getAnimeResponse } from '@libs/api'
 import TheLoading from '@/components/Utilities/TheLoading.vue'
 import HeaderMenu from '@/components/Utilities/Pagination/HeaderMenu.vue'
@@ -7,7 +8,9 @@ import AnimeList from '@/components/AnimeList/TheIndex.vue'
 import ThePagination from '@/components/Utilities/Pagination/ThePagination.vue'
 
 // State management
-const animeOnGoing = ref([])
+const route = useRoute()
+const slug = route.params.slug
+const animeByGenre = ref([])
 const isLoading = ref(true)
 const currentPage = ref(1)
 const totalPages = ref(0)
@@ -17,9 +20,9 @@ let intervalId // Untuk menyimpan ID interval
 const fetchData = async () => {
   try {
     isLoading.value = true
-    const response = await getAnimeResponse('otakudesu/completed', `page=${currentPage.value}`)
+    const response = await getAnimeResponse(`otakudesu/genres/${slug}`, `page=${currentPage.value}`)
 
-    animeOnGoing.value = response.data
+    animeByGenre.value = response.data
     totalPages.value = response.pagination.totalPages // Update totalPages berdasarkan respons API
   } catch (error) {
     console.error('Error fetching data:', error)
@@ -68,10 +71,10 @@ onBeforeUnmount(() => {
   <TheLoading v-if="isLoading" />
 
   <div v-else>
+    <HeaderMenu title="Genre" />
     <div class="min-h-[calc(100vh-155px)]">
-      <HeaderMenu title="Completed" />
       <div class="pb-16">
-        <AnimeList :api="animeOnGoing" hrefLink="/anime" />
+        <AnimeList :api="animeByGenre" hrefLink="/anime" />
       </div>
     </div>
     <div class="relative">

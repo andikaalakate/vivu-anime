@@ -2,25 +2,19 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { getAnimeResponse } from '@libs/api'
 import TheLoading from '@/components/Utilities/TheLoading.vue'
-import HeaderMenu from '@/components/Utilities/Pagination/HeaderMenu.vue'
-import AnimeList from '@/components/AnimeList/TheIndex.vue'
-import ThePagination from '@/components/Utilities/Pagination/ThePagination.vue'
 
 // State management
-const animeOnGoing = ref([])
+const animeList = ref([])
 const isLoading = ref(true)
-const currentPage = ref(1)
-const totalPages = ref(0)
 let intervalId // Untuk menyimpan ID interval
 
 // Fungsi untuk mengambil data dari API
 const fetchData = async () => {
   try {
     isLoading.value = true
-    const response = await getAnimeResponse('otakudesu/completed', `page=${currentPage.value}`)
+    const response = await getAnimeResponse('otakudesu/anime')
 
-    animeOnGoing.value = response.data
-    totalPages.value = response.pagination.totalPages // Update totalPages berdasarkan respons API
+    animeList.value = response.data
   } catch (error) {
     console.error('Error fetching data:', error)
   } finally {
@@ -38,14 +32,6 @@ const startInterval = () => {
 const stopInterval = () => {
   if (intervalId) {
     clearInterval(intervalId)
-  }
-}
-
-// Fungsi untuk mengatur halaman
-const setPage = (newPage) => {
-  if (newPage >= 1 && newPage <= totalPages.value) {
-    currentPage.value = newPage
-    fetchData()
   }
 }
 
@@ -67,15 +53,21 @@ onBeforeUnmount(() => {
 <template>
   <TheLoading v-if="isLoading" />
 
-  <div v-else>
-    <div class="min-h-[calc(100vh-155px)]">
-      <HeaderMenu title="Completed" />
-      <div class="pb-16">
-        <AnimeList :api="animeOnGoing" hrefLink="/anime" />
+  <div v-else class="grid grid-cols-1 2xl:grid-cols-2 m-8 gap-6">
+    <h1 class="text-4xl mb-8 mt-4 font-bold col-span-2 text-center text-color-whity">Daftar Anime</h1>
+    <div v-for="anime in animeList" :key="anime.berdasarkan" class="bg-color-dark rounded-xl">
+      <div class="p-4 text-color-whity bg-color-primary lg:static mini:sticky mini:top-0 mini:z-50">
+        <h1 class="text-2xl font-bold">{{ anime.berdasarkan }}</h1>
       </div>
-    </div>
-    <div class="relative">
-      <ThePagination :page="currentPage" :last-page="totalPages" :set-page="setPage" />
+      <div class="px-8 py-4">
+        <div class="grid grid-cols-3 gap-4">
+          <div v-for="list in anime.animeList" :key="list.slug">
+            <RouterLink :to="`/anime/${list.slug}`" class="text-color-whity hover:text-white hover:font-bold transition-all duration-100">
+              <p>{{ list.judul }}</p>
+            </RouterLink>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

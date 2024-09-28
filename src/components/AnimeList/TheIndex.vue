@@ -1,6 +1,7 @@
 <template>
   <div
-    class="animate__animated animate__fadeInUp animate__slow grid p-4 mini:grid-cols-2 mini:gap-6 hmin:grid-cols-2 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6"
+    v-if="api.length > 0"
+    class="animate__animated animate__fadeInUp animate__slow grid p-4 mini:grid-cols-2 mini:gap-6 hmin:grid-cols-2 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5"
   >
     <div
       v-for="Anime in api"
@@ -22,6 +23,13 @@
           {{ Anime.judul }}
         </h3>
       </RouterLink>
+    </div>
+  </div>
+  <div v-else>
+    <div class="animate__animated animate__fadeInUp animate__slow min-h-[calc(100vh-292px)] flex justify-center items-center">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-color-whity">Tidak ada anime</h1>
+      </div>
     </div>
   </div>
 </template>

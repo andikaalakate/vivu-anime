@@ -5,6 +5,8 @@ import { getAnimeResponse } from '@/libs/api'
 import HeaderMenu from '@/components/Utilities/Pagination/HeaderMenu.vue'
 import EpisodeList from '@/components/Utilities/EpisodeList.vue'
 import TheLoading from '@/components/Utilities/TheLoading.vue'
+import CommentInput from '@/components/AnimeList/CommentInput.vue'
+import CommentBox from '@/components/AnimeList/CommentBox.vue'
 
 const route = useRoute()
 const anime = ref(null)
@@ -98,7 +100,7 @@ watch(
   <div v-else>
     <HeaderMenu :title="anime.judul" />
 
-    <div class="grid grid-cols-2 p-4 gap-4">
+    <div class="grid lg:grid-cols-2 grid-cols-1 p-4 gap-4">
       <!-- Video Player -->
       <div>
         <iframe
@@ -148,6 +150,12 @@ watch(
           <EpisodeList :episodes="episodes" />
         </div>
       </div>
+    </div>
+
+     <div class="bg-color-dark p-4 m-4 rounded-lg shadow-lg transition-all duration-500">
+      <h3 class="text-color-whity text-2xl font-bold mx-4 my-2 border-b pb-2">Komentar</h3>
+      <CommentInput />
+      <CommentBox />
     </div>
   </div>
 </template>

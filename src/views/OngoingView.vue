@@ -68,9 +68,11 @@ onBeforeUnmount(() => {
   <TheLoading v-if="isLoading" />
 
   <div v-else>
-    <HeaderMenu title="Ongoing" />
-    <div class="pb-16">
-      <AnimeList :api="animeOnGoing" hrefLink="/anime" />
+    <div class="min-h-[calc(100vh-155px)]">
+      <HeaderMenu title="Ongoing" />
+      <div class="pb-16">
+        <AnimeList :api="animeOnGoing" hrefLink="/anime" />
+      </div>
     </div>
     <div class="relative">
       <ThePagination :page="currentPage" :last-page="totalPages" :set-page="setPage" />
