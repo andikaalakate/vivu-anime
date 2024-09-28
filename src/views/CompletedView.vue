@@ -49,7 +49,12 @@ const setPage = (newPage) => {
   }
 }
 
+const scrollToTop = () => {
+  scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 onMounted(() => {
+  scrollToTop()
   fetchData()
   startInterval() // Mulai interval untuk memperbarui data setiap 5 menit
 })

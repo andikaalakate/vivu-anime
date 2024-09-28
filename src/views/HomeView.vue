@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Header from '@components/AnimeList/TheHeader.vue'
 import AnimeList from '@components/AnimeList/TheIndex.vue'
-// import Trailer from '@components/Utilities/VideoPlayer/TheTrailer.vue'
+import Trailer from '@components/Utilities/VideoPlayer/TheTrailer.vue'
 import { getAnimeResponse } from '@libs/api'
 import TheLoading from '@/components/Utilities/TheLoading.vue'
 
@@ -42,7 +42,13 @@ const stopInterval = () => {
   }
 }
 
+// Fungsi untuk scroll keatas
+const scrollToTop = () => {
+  scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 onMounted(() => {
+  scrollToTop()
   // Cek apakah data sudah ada di localStorage
   const storedOnGoingData = localStorage.getItem('ongoingAnime')
   const storedCompletedData = localStorage.getItem('completedAnime')
@@ -75,7 +81,7 @@ onBeforeUnmount(() => {
       <!-- Bagian Trailer -->
       <section class="py-4">
         <Header title="Trailer" />
-        <!-- <Trailer title="Akasaki Kajitsu" /> -->
+        <Trailer title="Akasaki Kajitsu" />
       </section>
 
       <!-- Bagian Ongoing Anime -->

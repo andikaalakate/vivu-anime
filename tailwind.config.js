@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 /*eslint-env node*/
 
-const scrollbar = require("tailwind-scrollbar")
-
 export default {
   content: [
     "./index.html",
@@ -36,7 +34,7 @@ export default {
     },
   },
   plugins: [
-    scrollbar
+    require("tailwind-scrollbar"),
     // require("daisyui"),
   ],
 }

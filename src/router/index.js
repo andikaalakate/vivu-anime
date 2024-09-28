@@ -27,6 +27,11 @@ const router = createRouter({
       path: '/completed',
       name: 'completed',
       component: () => import('@views/CompletedView.vue')
+    },
+    {
+      path: '/episode/:slug',
+      name: 'episode',
+      component: () => import('@views/EpisodeView.vue')
     }
   ]
 })

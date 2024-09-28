@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import TheNavbar from '@components/Utilities/TheNavbar.vue';
+import ScrollToTop from '@components/Utilities/ScrollToTop.vue';
 </script>
 
 <template>
@@ -10,5 +11,7 @@ import TheNavbar from '@components/Utilities/TheNavbar.vue';
     <TheNavbar />
 
     <RouterView />
+
+    <ScrollToTop />
   </div>
 </template>
