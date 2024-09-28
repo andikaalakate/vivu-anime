@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  @apply p-0 m-0 box-border;
+}
+
+body {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Standard syntax */
+  @apply bg-color-secondary;
+}
+
+img {
+  @apply transition-all ease-in-out;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.img-card {
+  @apply mini:max-h-[10rem] minni:max-h-[12rem] hmin:max-h-[16rem] hp:max-h-[22rem] sm:max-h-[16rem] md:max-h-[15rem] lg:max-h-[16rem] tablet-l:max-h-[18rem] xl:max-h-[20rem] 2xl:max-h-[15rem] laptop:max-h-[18rem] pc:max-h-[17.5rem] max-h-[48rem] object-cover mini:w-full mini:h-auto lg:w-[30rem] lg:h-[42rem] items-center justify-center;
+}
+
+.loading {
+  width: 100px;
+  height: 100px;
+  display: grid;
+}
+
+.loading::before,
+.loading::after {
+  content: '';
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side, #0059ff 92%, #0000);
+  background:
+    var(--c) 50% 0,
+    var(--c) 50% 100%,
+    var(--c) 100% 50%,
+    var(--c) 0 50%;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  animation: s2 0.5s infinite;
+}
+
+.loading::before {
+  margin: 8px;
+  filter: hue-rotate(45deg);
+  background-size: 16px 16px;
+  animation-timing-function: linear;
+}
+
+@keyframes s2 {
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
