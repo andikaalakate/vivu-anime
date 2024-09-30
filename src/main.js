@@ -14,6 +14,7 @@ const app = createApp(App)
 app.use(router)
 app.use(PhosphorIcons)
 app.use(InstagramFeed)
+
 app.use(VuePlyr, {
     plyr: {}
   })

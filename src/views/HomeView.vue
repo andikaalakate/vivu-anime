@@ -12,6 +12,7 @@ const homeOnGoing = ref([])
 const homeCompleted = ref([])
 const homeGenres = ref([])
 const trailer = ref(null)
+const trailerName = ref(null)
 const randomAnime = ref(null)
 const randomPage = ref(1)
 const randomPageTrailer = ref(1)
@@ -85,10 +86,9 @@ const getTrailerAnime = async () => {
     const randomAnime =
       randomPageResponse.data[Math.floor(Math.random() * randomPageResponse.data.length)]
 
-    trailer.value = randomAnime.trailer.youtube_id
-    console.log('Trailer:', trailer.value)
+    trailerName.value = randomAnime.title
 
-    console.log('Selected anime:', randomAnime)
+    trailer.value = randomAnime.trailer.youtube_id
   } catch (error) {
     console.error('Error fetching random trailer:', error)
   } finally {
@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
     <main class="bg-color-secondary max-w-6xl mx-auto col-span-2">
       <!-- Bagian Trailer -->
       <section class="py-4">
-        <Header title="Trailer" />
+        <Header :title="'Trailer ' + trailerName" />
         <Trailer title="Akasaki Kajitsu" :code="trailer" />
       </section>
 

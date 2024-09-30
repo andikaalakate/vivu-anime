@@ -1,10 +1,16 @@
 <script setup>
+import { useRoute } from 'vue-router'
+
+// Mendapatkan parameter dari route
+const route = useRoute()
+
+// Mendefinisikan props untuk episodes
 defineProps({
   episodes: {
     type: Array,
     required: true
   }
-});
+})
 </script>
 
 <template>
@@ -17,12 +23,13 @@ defineProps({
       <li
         v-for="episode in episodes"
         :key="episode.slug"
-        class="mb-2 -mr-2 bg-blue-900 p-2 rounded-lg"
+        :class="episode.slug === route.params.slug ? 'bg-blue-900' : 'bg-blue-800'"
+        class="mb-2 -mr-2  p-2 rounded-lg"
       >
         <RouterLink 
-          :to="`/episode/${episode.slug}`"
+          :to="`/episode/${episode.slug}`" class="flex"
         >
-          <span class="font-semibold">{{ episode.judul }}</span>
+          <span class="font-semibold w-full h-full">{{ episode.judul }}</span>
         </RouterLink>
       </li>
     </ul>

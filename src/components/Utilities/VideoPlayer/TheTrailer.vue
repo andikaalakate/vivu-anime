@@ -3,8 +3,8 @@
     <div
       class="w-full h-full p-1 bg-color-primary rounded-xl border-color-primary border-4 shadow-xl"
     >
-      <vue-plyr>
-        <div v-if="code" class="plyr__video-embed">
+      <vue-plyr v-if="code != null">
+        <div class="plyr__video-embed">
           <iframe
             class="rounded-xl -z-10"
             :src="
@@ -18,10 +18,16 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
         </div>
-        <video v-else controls crossorigin playsinline data-poster="poster.jpg">
-          <source size="1080" src="/honeypie.mp4" type="video/mp4" />
-        </video>
       </vue-plyr>
+      <div v-else class="flex justify-center min-h-full items-center">
+        <div
+          class="animate__animated animate__fadeIn animate__slower h-full"
+        >
+          <div class="text-center mx-auto">
+            <h1 class="text-3xl font-bold text-color-whity">Tidak ada trailer</h1>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
