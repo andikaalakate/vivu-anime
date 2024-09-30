@@ -20,12 +20,18 @@ importers:
       vue:
         specifier: ^3.4.29
         version: 3.5.9
+      vue-instagram-embed:
+        specifier: ^1.0.0
+        version: 1.0.0(vue@3.5.9)
       vue-plyr:
         specifier: ^7.0.0
         version: 7.0.0
       vue-router:
         specifier: ^4.3.3
         version: 4.4.5(vue@3.5.9)
+      vue3-instagram-feed:
+        specifier: ^0.1.4
+        version: 0.1.4
       vuex:
         specifier: ^4.1.0
         version: 4.1.0(vue@3.5.9)
@@ -496,6 +502,9 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
+  axios@0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+
   axios@1.7.7:
     resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
 
@@ -795,6 +804,10 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  highlight.js@9.18.5:
+    resolution: {integrity: sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==}
+    deprecated: Support has ended for 9.x series. Upgrade to @latest
 
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
@@ -1287,6 +1300,14 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
+  vue-hljs@1.1.2:
+    resolution: {integrity: sha512-KRNdqY8Z54Tn6M34azYmKybW9YL5uhAnjpRTkIaxJOP2e0jkGkTBXzkYJFOFwBC+lWj+1SBs5PLvc6O3RKhpsQ==}
+    peerDependencies:
+      vue: ^2.0.0
+
+  vue-instagram-embed@1.0.0:
+    resolution: {integrity: sha512-sQAa4ew6g4OE20XQzc/uYw40jFOoIFSFpfqvhaKNpgkQkBG5aNRxqdLsgAJtXAj2Q2H9kvQ/xxbiLGoQTrIsbQ==}
+
   vue-plyr@7.0.0:
     resolution: {integrity: sha512-NvbO/ZzV1IxlBQQbQlon5Sk8hKuGAj3k4k0XVdi7gM4oSqu8mZMhJ3WM3FfAtNfV790jbLnb8P3dHYqaBqIv6g==}
 
@@ -1294,6 +1315,9 @@ packages:
     resolution: {integrity: sha512-4fKZygS8cH1yCyuabAXGUAsyi1b2/o/OKgu/RUb+znIYOxPRxdkytJEx+0wGcpBE1pX6vUgh5jwWOKRGvuA/7Q==}
     peerDependencies:
       vue: ^3.2.0
+
+  vue3-instagram-feed@0.1.4:
+    resolution: {integrity: sha512-AxDMYoEnPMN1G6BgvM3WJA48hM+AUgIOKZIbsJP/Vv1nehkmpKBrfANN6jFjMJnBZgFPOwNitQYwLRqmISyVRw==}
 
   vue@2.7.16:
     resolution: {integrity: sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==}
@@ -1694,6 +1718,13 @@ snapshots:
       postcss: 8.4.47
       postcss-value-parser: 4.2.0
 
+  axios@0.27.2:
+    dependencies:
+      follow-redirects: 1.15.9
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+
   axios@1.7.7:
     dependencies:
       follow-redirects: 1.15.9
@@ -2032,6 +2063,8 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  highlight.js@9.18.5: {}
 
   ignore@5.3.2: {}
 
@@ -2478,6 +2511,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  vue-hljs@1.1.2(vue@3.5.9):
+    dependencies:
+      highlight.js: 9.18.5
+      vue: 3.5.9
+
+  vue-instagram-embed@1.0.0(vue@3.5.9):
+    dependencies:
+      vue-hljs: 1.1.2(vue@3.5.9)
+    transitivePeerDependencies:
+      - vue
+
   vue-plyr@7.0.0:
     dependencies:
       plyr: https://codeload.github.com/sampotts/plyr/tar.gz/d434c9af16e641400aaee93188594208d88f2658
@@ -2487,6 +2531,14 @@ snapshots:
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.9
+
+  vue3-instagram-feed@0.1.4:
+    dependencies:
+      axios: 0.27.2
+      vue: 3.5.9
+    transitivePeerDependencies:
+      - debug
+      - typescript
 
   vue@2.7.16:
     dependencies:

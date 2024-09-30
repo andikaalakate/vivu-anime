@@ -37,7 +37,11 @@ img {
 }
 
 .img-card {
-  @apply object-cover justify-center items-center mini:max-h-[28rem] minni:max-h-[34rem] hmin:max-h-[38rem] hp:max-h-[40rem] sm:max-h-[50rem] lg:max-h-[60rem] mini:w-full h-full max-w-[50rem] lg:w-[50rem] rounded-lg shadow-xl border-2 border-color-dark md:hover:scale-95 duration-500 transition-all delay-200 mx-auto;
+  @apply relative overflow-hidden justify-center items-center mini:max-h-[28rem] minni:max-h-[34rem] hmin:max-h-[38rem] hp:max-h-[40rem] sm:max-h-[50rem] lg:max-h-[60rem] max-w-[50rem] lg:w-[50rem] rounded-lg shadow-xl border-2 border-color-dark md:hover:border-2 md:hover:border-color-primary duration-500 transition-all delay-100 mx-auto;
+}
+
+.img {
+  @apply object-cover mini:w-full h-full md:hover:scale-105
 }
 
 .loading {

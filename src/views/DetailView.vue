@@ -67,7 +67,9 @@ onMounted(() => {
 
     <!-- Konten Anime -->
     <div class="px-4 flex lg:flex-nowrap flex-wrap gap-4 text-color-whity">
-      <img :src="anime?.poster" :alt="anime?.poster" class="img-card" />
+      <div class="img-card">
+        <img :src="anime?.poster" :alt="anime?.poster" class="img" />
+      </div>
 
       <div class="text-justify text-xl bg-color-dark rounded-lg p-4 w-full relative">
         <div v-if="anime?.sinopsis?.paragraphs?.length > 0" class="p-2">

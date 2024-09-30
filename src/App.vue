@@ -1,7 +1,17 @@
 <script setup>
+import { onBeforeMount } from 'vue'
 import { RouterView } from 'vue-router'
-import TheNavbar from '@components/Utilities/TheNavbar.vue';
-import ScrollToTop from '@components/Utilities/ScrollToTop.vue';
+import TheNavbar from '@components/Utilities/TheNavbar.vue'
+import ScrollToTop from '@components/Utilities/ScrollToTop.vue'
+const disableRightClick = (e) => {
+  e.preventDefault()
+}
+
+document.addEventListener('contextmenu', disableRightClick)
+
+onBeforeMount(() => {
+  document.removeEventListener('contextmenu', disableRightClick)
+})
 </script>
 
 <template>

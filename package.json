@@ -15,8 +15,10 @@
     "animate.css": "^4.1.1",
     "axios": "^1.7.7",
     "vue": "^3.4.29",
+    "vue-instagram-embed": "^1.0.0",
     "vue-plyr": "^7.0.0",
     "vue-router": "^4.3.3",
+    "vue3-instagram-feed": "^0.1.4",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

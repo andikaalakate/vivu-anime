@@ -6,6 +6,12 @@ export const getAnimeResponse = async (resource, query) => {
   return response.data
 }
 
+// Fungsi untuk mendapatkan trailer anime response dari API
+export const getTrailerResponse = async (resource, query) => {
+  const response = await axios.get(`${import.meta.env.VITE_API_JIKAN_URL}/${resource}?${query}`)
+  return response.data
+}
+
 // Fungsi untuk mendapatkan properti nested dari anime response
 export const getNestedAnimeResponse = async (resource, objectProperty) => {
   const response = await getAnimeResponse(resource)
