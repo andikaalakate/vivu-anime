@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
     <main class="bg-color-secondary max-w-6xl mx-auto col-span-2">
       <!-- Bagian Trailer -->
       <section class="py-4">
-        <Header :title="'Trailer ' + trailerName" />
+        <Header :title="'Trailer'" />
         <Trailer title="Akasaki Kajitsu" :code="trailer" />
       </section>
 

@@ -2,9 +2,11 @@
   <div
     class="animate__animated animate__fadeIn animate__slower mini:sticky lg:static mini:top-0 z-50 mx-4 my-2 flex items-center justify-between rounded-b-lg bg-gradient-to-br from-color-primary to-blue-500 px-4 py-2 shadow-lg"
   >
-    <h1 class="title mr-4 text-2xl font-bold text-color-whity" :title="title">
-      {{ title }}
-    </h1>
+    <div class="relative">
+      <h1 class="title mr-4 text-2xl font-bold text-color-whity" :title="title">
+        {{ title }}
+      </h1>
+    </div>
     <RouterLink
       v-if="linkHref && linkTitle"
       :to="linkHref"

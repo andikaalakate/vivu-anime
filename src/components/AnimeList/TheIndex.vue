@@ -14,11 +14,13 @@
             <PhStar :size="15" class="inline mr-1 -mt-1"/>
             <span>
               {{ Anime.rating }}
-
             </span>
           </h1>
+          <h1 v-else-if="Anime.hariRilis" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.hariRilis }}</h1>
+          <h1 v-else-if="Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir }}</h1>
           <h1 v-else class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">N/A</h1>
-          <h1 v-if="Anime.totalEpisode" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.totalEpisode }}</h1>
+          <h1 v-if="Anime.jumlahEpisode" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.jumlahEpisode }} Eps</h1> 
+          <h1 v-else-if="Anime.episodeTerbaru" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">Ep {{ Anime.episodeTerbaru }}</h1>
           <h1 v-else class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">N/A</h1>
         </div>
         <div class="overflow-hidden aspect-[3/4] top-0 rounded-lg">
