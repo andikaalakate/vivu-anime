@@ -24,11 +24,9 @@ defineProps({
         v-for="episode in episodes"
         :key="episode.slug"
         :class="episode.slug === route.params.slug ? 'bg-blue-900' : 'bg-blue-800'"
-        class="mb-2 -mr-2  p-2 rounded-lg"
+        class="mb-2 -mr-2 p-2 rounded-lg"
       >
-        <RouterLink 
-          :to="`/episode/${episode.slug}`" class="flex"
-        >
+        <RouterLink :to="`/episode/${episode.slug}`" class="flex">
           <span class="font-semibold w-full h-full">{{ episode.judul }}</span>
         </RouterLink>
       </li>

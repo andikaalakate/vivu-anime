@@ -26,18 +26,20 @@
             {{ Anime.judul }}
           </h3>
           <div class="text-sm flex flex-nowrap">
-            <div class="bg-color-primary 
-            border 
-            border-color-whity px-2 py-1 mr-2 my-2 font-semibold rounded-lg text-color-whity">
+            <div
+              class="bg-color-primary border border-color-whity px-2 py-1 mr-2 my-2 font-semibold rounded-lg text-color-whity"
+            >
               <p class="text-left">
                 <span class="text-white underline">{{ Anime.jumlahEpisode }} Episode</span>
               </p>
             </div>
-            <div class="bg-color-primary 
-            border 
-            border-color-whity px-2 py-1 mr-2 my-2 font-semibold rounded-lg text-color-whity flex  items-center justify-center">
+            <div
+              class="bg-color-primary border border-color-whity px-2 py-1 mr-2 my-2 font-semibold rounded-lg text-color-whity flex items-center justify-center"
+            >
               <p class="text-left align-middle">
-                <PhStar :size="15" class="inline mr-1 -mt-1" /><span class="text-white underline">{{ Anime.rating }}</span>
+                <PhStar :size="15" class="inline mr-1 -mt-1" /><span class="text-white underline">{{
+                  Anime.rating
+                }}</span>
               </p>
             </div>
           </div>

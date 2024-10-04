@@ -9,19 +9,54 @@
       class="group rounded-lg border-2 border-color-primary transition-all duration-500 hover:scale-105 hover:border-color-primary hover:from-color-primary hover:to-blue-500 active:scale-[1.07]"
     >
       <RouterLink :to="`${hrefLink}/${Anime.slug}`" class="relative cursor-pointer">
-        <div class="absolute top-0 right-0 left-0 z-10 flex justify-between text-color-whity group-hover:text-color-whity text-sm transition-all duration-500">
-          <h1 v-if="Anime.rating" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">
-            <PhStar :size="15" class="inline mr-1 -mt-1"/>
+        <div
+          class="absolute top-0 right-0 left-0 z-10 flex justify-between text-color-whity group-hover:text-color-whity text-sm transition-all duration-500"
+        >
+          <h1
+            v-if="Anime.rating"
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            <PhStar :size="15" class="inline mr-1 -mt-1" />
             <span>
               {{ Anime.rating }}
             </span>
           </h1>
-          <h1 v-else-if="Anime.hariRilis" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.hariRilis }}</h1>
-          <h1 v-else-if="Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir }}</h1>
-          <h1 v-else class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary">N/A</h1>
-          <h1 v-if="Anime.jumlahEpisode" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">{{ Anime.jumlahEpisode }} Eps</h1> 
-          <h1 v-else-if="Anime.episodeTerbaru" class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">Ep {{ Anime.episodeTerbaru }}</h1>
-          <h1 v-else class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary">N/A</h1>
+          <h1
+            v-else-if="Anime.hariRilis"
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            {{ Anime.hariRilis }}
+          </h1>
+          <h1
+            v-else-if="Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir"
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            {{ Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir }}
+          </h1>
+          <h1
+            v-else
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            N/A
+          </h1>
+          <h1
+            v-if="Anime.jumlahEpisode"
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            {{ Anime.jumlahEpisode }} Eps
+          </h1>
+          <h1
+            v-else-if="Anime.episodeTerbaru"
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            Ep {{ Anime.episodeTerbaru }}
+          </h1>
+          <h1
+            v-else
+            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary"
+          >
+            N/A
+          </h1>
         </div>
         <div class="overflow-hidden aspect-[3/4] top-0 rounded-lg">
           <img
@@ -42,7 +77,9 @@
     </div>
   </div>
   <div v-else>
-    <div class="animate__animated animate__fadeInUp animate__slow min-h-[calc(100vh-292px)] flex justify-center items-center">
+    <div
+      class="animate__animated animate__fadeInUp animate__slow min-h-[calc(100vh-292px)] flex justify-center items-center"
+    >
       <div class="text-center">
         <h1 class="text-3xl font-bold text-color-whity">Tidak ada anime</h1>
       </div>

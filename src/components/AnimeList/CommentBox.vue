@@ -39,7 +39,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="grid grid-cols-1 max-h-[30rem] gap-4 m-4 -mr-1 pr-2 overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300">
+  <div
+    class="grid grid-cols-1 max-h-[30rem] gap-4 m-4 -mr-1 pr-2 overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300"
+  >
     <div v-for="comm in comments" :key="comm.id">
       <div
         class="text-color-whity bg-color-secondary border border-slate-500 p-4 rounded-lg shadow-lg"

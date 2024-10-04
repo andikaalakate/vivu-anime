@@ -20,9 +20,7 @@
         </div>
       </vue-plyr>
       <div v-else class="flex justify-center min-h-full items-center">
-        <div
-          class="animate__animated animate__fadeIn animate__slower h-full"
-        >
+        <div class="animate__animated animate__fadeIn animate__slower h-full">
           <div class="text-center mx-auto">
             <h1 class="text-3xl font-bold text-color-whity">Tidak ada trailer</h1>
           </div>

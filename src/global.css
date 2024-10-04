@@ -41,7 +41,7 @@ img {
 }
 
 .img {
-  @apply object-cover mini:w-full h-full md:hover:scale-105
+  @apply object-cover mini:w-full h-full md:hover:scale-105;
 }
 
 .loading {

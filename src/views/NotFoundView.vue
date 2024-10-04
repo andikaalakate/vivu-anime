@@ -18,7 +18,9 @@ const handleBack = (event) => {
 </script>
 
 <template>
-  <div class="md:min-h-[calc(100vh-72px)] mini:min-h-[calc(100vh-175px)] max-w-xl flex flex-col justify-center items-center mx-auto">
+  <div
+    class="md:min-h-[calc(100vh-72px)] mini:min-h-[calc(100vh-175px)] max-w-xl flex flex-col justify-center items-center mx-auto"
+  >
     <div
       class="flex items-center justify-center group hover:scale-125 transition-transform duration-500"
     >

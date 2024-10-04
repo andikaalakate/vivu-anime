@@ -10,27 +10,27 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const isVisible = ref(false);
+const isVisible = ref(false)
 
 const handleScroll = () => {
-  const currentScrollY = window.scrollY;
-  isVisible.value = currentScrollY > 0;
-};
+  const currentScrollY = window.scrollY
+  isVisible.value = currentScrollY > 0
+}
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
-  });
-};
+    behavior: 'smooth'
+  })
+}
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>

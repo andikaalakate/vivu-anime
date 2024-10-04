@@ -73,9 +73,7 @@ const fetchAnimeData = async () => {
     }
 
     // Proses ambil url download
-    if (
-      response.data.batch
-    ) {
+    if (response.data.batch) {
       slugBatch.value = response.data.batch.slug
       const responseB = await getAnimeResponse(`otakudesu/batch/${slugBatch.value}`)
 
@@ -163,7 +161,9 @@ onMounted(() => {
 
     <div class="bg-color-dark p-4 m-4 rounded-lg shadow-lg transition-all duration-500">
       <!-- Downloads URL -->
-      <h3 class="text-color-whity text-2xl font-bold mx-4 my-2 border-b pb-2">Batch {{ anime?.judul }}</h3>
+      <h3 class="text-color-whity text-2xl font-bold mx-4 my-2 border-b pb-2">
+        Batch {{ anime?.judul }}
+      </h3>
       <div class="grid grid-cols-1 gap-4 m-4 lg:grid-cols-3">
         <div
           v-for="download in downloads"
