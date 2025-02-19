@@ -5,10 +5,10 @@
   >
     <div
       v-for="Anime in api"
-      :key="Anime.slug"
+      :key="Anime.animeId"
       class="group rounded-lg border-2 border-color-primary transition-all duration-500 hover:scale-105 hover:border-color-primary hover:from-color-primary hover:to-blue-500 active:scale-[1.07]"
     >
-      <RouterLink :to="`${hrefLink}/${Anime.slug}`" class="relative cursor-pointer">
+      <RouterLink :to="`${hrefLink}/${Anime.animeId}`" class="relative cursor-pointer">
         <div
           class="absolute top-0 right-0 left-0 z-10 flex justify-between text-color-whity group-hover:text-color-whity text-sm transition-all duration-500"
         >
@@ -61,16 +61,16 @@
         <div class="overflow-hidden aspect-[3/4] top-0 rounded-lg">
           <img
             :src="Anime.poster"
-            :alt="Anime.judul"
+            :alt="Anime.title"
             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>
         <div class="transition-all duration-500">
           <h3
             class="title p-4 font-bold group-hover:text-color-whity md:text-xl text-color-whity bg-gradient-to-t from-[rgba(34,40,49,1)] to-[rgba(45,42,49,0.15)] group-hover:bg-color-primary group-hover:bg-opacity-15 group-hover:from-color-primary group-hover:to-[rgba(45,42,49,0.15)] absolute bottom-0 left-0 right-0 rounded-b-md group-hover:rounded-b-md"
-            :title="Anime.judul"
+            :title="Anime.title"
           >
-            {{ Anime.judul }}
+            {{ Anime.title }}
           </h3>
         </div>
       </RouterLink>

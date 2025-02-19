@@ -66,12 +66,12 @@ onBeforeUnmount(() => {
         </div>
         <div class="px-8 py-4">
           <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            <div v-for="list in anime.animeList" :key="list.slug">
+            <div v-for="list in anime.animeList" :key="list.animeId">
               <RouterLink
-                :to="`/anime/${list.slug}`"
+                :to="`/anime/${list.animeId}`"
                 class="text-color-whity hover:text-white hover:font-bold transition-all duration-100"
               >
-                <p>{{ list.judul }}</p>
+                <p>{{ list.title }}</p>
               </RouterLink>
             </div>
           </div>

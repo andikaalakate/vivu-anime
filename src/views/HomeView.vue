@@ -25,14 +25,14 @@ const fetchData = async () => {
     const response = await getAnimeResponse('otakudesu/home')
 
     // Simpan data yang diambil ke dalam state
-    homeOnGoing.value = response.data.onGoing
-    homeCompleted.value = response.data.completed
+    homeOnGoing.value = response.data.ongoing.animeList
+    homeCompleted.value = response.data.completed.animeList
 
     // Hapus cache lama dan simpan data baru ke localStorage
     localStorage.removeItem('ongoingAnime')
     localStorage.removeItem('completedAnime')
-    localStorage.setItem('ongoingAnime', JSON.stringify(response.data.onGoing))
-    localStorage.setItem('completedAnime', JSON.stringify(response.data.completed))
+    localStorage.setItem('ongoingAnime', JSON.stringify(response.data.ongoing.animeList))
+    localStorage.setItem('completedAnime', JSON.stringify(response.data.completed.animeList))
   } catch (error) {
     console.error('Error fetching data:', error)
   } finally {
