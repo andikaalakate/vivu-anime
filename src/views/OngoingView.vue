@@ -19,7 +19,7 @@ const fetchData = async () => {
     isLoading.value = true
     const response = await getAnimeResponse('otakudesu/ongoing', `page=${currentPage.value}`)
 
-    animeOnGoing.value = response.data
+    animeOnGoing.value = response.data.animeList
     totalPages.value = response.pagination.totalPages // Update totalPages berdasarkan respons API
   } catch (error) {
     console.error('Error fetching data:', error)

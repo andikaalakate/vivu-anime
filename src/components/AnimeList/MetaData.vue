@@ -15,7 +15,7 @@ export default {
       default: ''
     },
     detail: {
-      type: String,
+      // type: String,
       default: ''
     }
   }

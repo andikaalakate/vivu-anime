@@ -13,25 +13,25 @@
           class="absolute top-0 right-0 left-0 z-10 flex justify-between text-color-whity group-hover:text-color-whity text-sm transition-all duration-500"
         >
           <h1
-            v-if="Anime.rating"
+            v-if="Anime.score"
             class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
           >
             <PhStar :size="15" class="inline mr-1 -mt-1" />
             <span>
-              {{ Anime.rating }}
+              {{ Anime.score }}
             </span>
           </h1>
           <h1
-            v-else-if="Anime.hariRilis"
+            v-else-if="Anime.releaseDay"
             class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
           >
-            {{ Anime.hariRilis }}
+            {{ Anime.releaseDay }}
           </h1>
           <h1
-            v-else-if="Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir"
+            v-else-if="Anime.latestReleaseDate || Anime.lastReleaseDate"
             class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-br-lg px-2 py-1 group-hover:bg-color-primary"
           >
-            {{ Anime.tanggalRilisTerbaru || Anime.tanggalRilisTerakhir }}
+            {{ Anime.latestReleaseDate || Anime.lastReleaseDate }}
           </h1>
           <h1
             v-else
@@ -40,16 +40,10 @@
             N/A
           </h1>
           <h1
-            v-if="Anime.jumlahEpisode"
+            v-if="Anime.episodes"
             class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary"
           >
-            {{ Anime.jumlahEpisode }} Eps
-          </h1>
-          <h1
-            v-else-if="Anime.episodeTerbaru"
-            class="bg-color-dark bg-opacity-50 font-semibold rounded-t-lg rounded-bl-lg px-2 py-1 group-hover:bg-color-primary"
-          >
-            Ep {{ Anime.episodeTerbaru }}
+            {{ Anime.episodes }}
           </h1>
           <h1
             v-else

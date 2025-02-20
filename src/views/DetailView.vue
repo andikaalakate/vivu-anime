@@ -23,16 +23,16 @@ const characterLimit = 100 // Batas karakter awal sebelum memotong teks
 
 // Fungsi untuk mendapatkan paragraf yang terlihat
 const visibleParagraphs = () => {
-  if (!anime.value || !anime.value.sinopsis) return []
+  if (!anime.value || !anime.value.synopsis) return []
   return expanded.value
-    ? anime.value.sinopsis.paragraphs
-    : anime.value.sinopsis.paragraphs.slice(0, 1)
+    ? anime.value.synopsis.paragraphs
+    : anime.value.synopsis.paragraphs.slice(0, 1)
 }
 
 // Periksa apakah ada teks yang dipotong
 const hasOverflowedText = () => {
-  if (!anime.value || !anime.value.sinopsis) return false
-  return anime.value.sinopsis.paragraphs.some((paragraph) => paragraph.length > characterLimit)
+  if (!anime.value || !anime.value.synopsis) return false
+  return anime.value.synopsis.paragraphs.some((paragraph) => paragraph.length > characterLimit)
 }
 
 // Memotong teks jika panjangnya melebihi batas
@@ -60,7 +60,7 @@ const fetchAnimeData = async () => {
     if (response.data.episodeList) {
       episodes.value = response.data.episodeList
         .map((episode) => {
-          const episodeSlug = episode.slug // Ambil slug episode
+          const episodeSlug = episode.episodeId // Ambil slug episode
           const episodeNumberMatch = episodeSlug.match(/episode-(\d+)-sub-indo/) // Sesuaikan regex sesuai format slug
           const episodeNumber = episodeNumberMatch ? episodeNumberMatch[1] : null // Ambil nomor episode
           return {
@@ -74,10 +74,10 @@ const fetchAnimeData = async () => {
 
     // Proses ambil url download
     if (response.data.batch) {
-      slugBatch.value = response.data.batch.slug
+      slugBatch.value = response.data.batch.batchId
       const responseB = await getAnimeResponse(`otakudesu/batch/${slugBatch.value}`)
 
-      downloads.value = responseB.data.batchList[0].qualities
+      downloads.value = responseB.data.downloadUrl.formats[0].qualities
     }
   } catch (error) {
     console.error('Error fetching anime data:', error)
@@ -110,7 +110,7 @@ onMounted(() => {
     <div
       class="p-2 mx-4 mt-4 mb-6 flex justify-between items-center gap-4 animate__animated animate__fadeIn animate__slower bg-gradient-to-br from-color-primary to-blue-500 rounded-lg shadow-lg"
     >
-      <h3 class="text-color-whity text-xl px-2 title">{{ anime?.judul }}</h3>
+      <h3 class="text-color-whity text-xl px-2 title">{{ anime?.title }}</h3>
       <ButtonBack />
     </div>
 
@@ -121,7 +121,7 @@ onMounted(() => {
       </div>
 
       <div class="text-justify text-xl bg-color-dark rounded-lg p-4 w-full relative">
-        <div v-if="anime?.sinopsis?.paragraphs?.length > 0" class="p-2">
+        <div v-if="anime?.synopsis?.paragraphs?.length > 0" class="p-2">
           <p v-for="(paragraph, index) in visibleParagraphs()" :key="index" class="p-2">
             {{ truncatedText(paragraph, index) }}
           </p>
@@ -147,13 +147,12 @@ onMounted(() => {
         <div
           class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 p-4 mt-2 gap-4 justify-center items-center rounded-lg bg-color-darker text-color-whity"
         >
-          <MetaData title="Skor" :detail="anime?.skor" />
-          <MetaData title="Episode" :detail="anime?.totalEpisode" />
-          <MetaData title="Tipe" :detail="anime?.tipe" />
-          <MetaData title="Durasi" :detail="anime?.durasi" />
-          <MetaData title="Tanggal Rilis" :detail="anime?.tanggalRilis" />
+          <MetaData title="Skor" :detail="anime?.score" />
+          <MetaData title="Episode" :detail="anime?.episodes" />
+          <MetaData title="Durasi" :detail="anime?.duration" />
+          <MetaData title="Tanggal Rilis" :detail="anime?.aired" />
           <MetaData title="Status" :detail="anime?.status" />
-          <MetaData title="Studio" :detail="anime?.studio" />
+          <MetaData title="Studio" :detail="anime?.studios" />
         </div>
         <EpisodeList :episodes="episodes" />
       </div>
@@ -162,23 +161,23 @@ onMounted(() => {
     <div class="bg-color-dark p-4 m-4 rounded-lg shadow-lg transition-all duration-500">
       <!-- Downloads URL -->
       <h3 class="text-color-whity text-2xl font-bold mx-4 my-2 border-b pb-2">
-        Batch {{ anime?.judul }}
+        Batch {{ anime?.title }}
       </h3>
       <div class="grid grid-cols-1 gap-4 m-4 lg:grid-cols-3">
         <div
           v-for="download in downloads"
-          :key="download.judul"
+          :key="download.title"
           class="text-color-whity p-3 rounded-lg bg-color-primary"
         >
-          <p>{{ download.judul }} - {{ download.size }}</p>
+          <p>{{ download.title }} - {{ download.size }}</p>
           <div class="flex flex-wrap gap-2 mt-2">
             <a
               v-for="url in download.urls"
-              :key="url.judul"
+              :key="url.title"
               :href="url.url"
               target="_blank"
               class="text-color-whity bg-blue-800 py-2 px-4 border-2 border-color-primary hover:border-color-whity rounded-lg hover:text-white transition-all duration-500"
-              >{{ url.judul }}</a
+              >{{ url.title }}</a
             >
           </div>
         </div>

@@ -14,7 +14,7 @@ const fetchData = async () => {
     isLoading.value = true
     const response = await getAnimeResponse('otakudesu/anime')
 
-    animeList.value = response.data
+    animeList.value = response.data.list
   } catch (error) {
     console.error('Error fetching data:', error)
   } finally {
@@ -58,11 +58,11 @@ onBeforeUnmount(() => {
       Daftar Anime
     </h1>
     <div class="grid grid-cols-1 2xl:grid-cols-2 m-8 gap-6">
-      <div v-for="anime in animeList" :key="anime.berdasarkan" class="bg-color-dark rounded-xl">
+      <div v-for="anime in animeList" :key="anime.startWith" class="bg-color-dark rounded-xl">
         <div
           class="p-4 text-color-whity bg-color-primary lg:static mini:sticky mini:top-0 mini:z-50"
         >
-          <h1 class="text-2xl font-bold">{{ anime.berdasarkan }}</h1>
+          <h1 class="text-2xl font-bold">{{ anime.startWith }}</h1>
         </div>
         <div class="px-8 py-4">
           <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">

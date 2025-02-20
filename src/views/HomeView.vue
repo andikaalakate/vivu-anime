@@ -53,7 +53,7 @@ const getRandomAnime = async () => {
       `page=${randomPage.value}`
     )
 
-    const animes = randomPageResponse.data.slice(0, 6)
+    const animes = randomPageResponse.data.animeList.slice(0, 6)
     randomAnime.value = animes
   } catch (error) {
     console.error('Error fetching random anime:', error)
@@ -101,11 +101,11 @@ const fetchGenres = async () => {
     const response = await getAnimeResponse('otakudesu/genres')
 
     // Simpan data yang diambil ke dalam state
-    homeGenres.value = response.data
+    homeGenres.value = response.data.genreList
 
     // Hapus cache lama dan simpan data baru ke localStorage
     localStorage.removeItem('genres')
-    localStorage.setItem('genres', JSON.stringify(response.data))
+    localStorage.setItem('genres', JSON.stringify(response.data.genreList))
   } catch (error) {
     console.error('Error fetching genres:', error)
   } finally {
@@ -204,9 +204,9 @@ onBeforeUnmount(() => {
               v-for="genre in homeGenres"
               :key="genre"
               class="text-color-whity hover:text-white transition-all duration-500 bg-color-dark py-1 px-4 rounded-lg self-end"
-              :to="`/genre/${genre.slug}`"
+              :to="`/genres/${genre.genreId}`"
             >
-              {{ genre.judul }}
+              {{ genre.title }}
             </RouterLink>
           </div>
         </div>

@@ -7,7 +7,7 @@ import AnimeList from '@/components/AnimeList/TheIndex.vue'
 import ThePagination from '@/components/Utilities/Pagination/ThePagination.vue'
 
 // State management
-const animeOnGoing = ref([])
+const animeCompleted = ref([])
 const isLoading = ref(true)
 const currentPage = ref(1)
 const totalPages = ref(0)
@@ -19,7 +19,7 @@ const fetchData = async () => {
     isLoading.value = true
     const response = await getAnimeResponse('otakudesu/completed', `page=${currentPage.value}`)
 
-    animeOnGoing.value = response.data
+    animeCompleted.value = response.data.animeList
     totalPages.value = response.pagination.totalPages // Update totalPages berdasarkan respons API
   } catch (error) {
     console.error('Error fetching data:', error)
@@ -71,7 +71,7 @@ onBeforeUnmount(() => {
     <div class="min-h-[calc(100vh-155px)]">
       <HeaderMenu title="Completed" />
       <div class="pb-16">
-        <AnimeList :api="animeOnGoing" hrefLink="/anime" />
+        <AnimeList :api="animeCompleted" hrefLink="/anime" />
       </div>
     </div>
     <div class="relative">
